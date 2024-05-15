@@ -12,7 +12,7 @@ function GameGrid() {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
         spacing={10}
-        padding={10}
+        padding={20}
       >
         {games?.map((game: Game) => {
           return <GameCard key={game.id} game={game} />;
