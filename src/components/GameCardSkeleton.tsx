@@ -1,17 +1,8 @@
-import {
-  Card,
-  CardBody,
-  Heading,
-  HStack,
-  Skeleton,
-  SkeletonText,
-} from "@chakra-ui/react";
-import React from "react";
-import PlatformIconList from "./PlatformIconList";
+import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
 
 function GameCardSkeleton() {
   return (
-    <Card borderRadius={25} overflow="hidden">
+    <Card>
       <Skeleton height="300px" width="600px" />
       <CardBody>
         <SkeletonText />
