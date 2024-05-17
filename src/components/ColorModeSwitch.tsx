@@ -9,6 +9,7 @@ function ColorModeSwitch() {
         colorScheme="green"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
+        size="lg"
       />
       <Text>{colorMode === "dark" ? "Dark Mode" : "Light Mode"}</Text>
     </HStack>

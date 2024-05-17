@@ -4,9 +4,10 @@ import GameCard from "./GameCard";
 
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import useData from "../hooks/useData";
 
 function GameGrid() {
-  const { games, error, loading } = useGames();
+  const { data, error, loading } = useData<Game>("/games");
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <div>
@@ -15,7 +16,7 @@ function GameGrid() {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
         spacing={10}
-        padding={5}
+        padding="10px"
         justifyContent="center"
       >
         {loading &&
@@ -26,7 +27,7 @@ function GameGrid() {
               </GameCardContainer>
             );
           })}
-        {games?.map((game: Game) => {
+        {data?.map((game: Game) => {
           return (
             <GameCardContainer>
               <GameCard key={game.id} game={game} />
