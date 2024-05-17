@@ -1,11 +1,30 @@
 import React from "react";
 import useData from "../hooks/useData";
 import { Genre } from "../hooks/useGenre";
-import { HStack, Image, List, ListItem, Text, VStack } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
+import GenreSkeleton from "./GenreSkeleton";
 
 const GenreList = () => {
-  const { data } = useData<Genre>("/genres");
+  const { data, loading, error } = useData<Genre>("/genres");
+  const geneSkeleton = Array.from({ length: 15 }, (_, index) => index + 1);
+
+  if (loading) {
+    return (
+      <ul>
+        {geneSkeleton.map((skeleton) => (
+          <li key={skeleton}>
+            <GenreSkeleton />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (error) {
+    return null;
+  }
+
   return (
     <ul>
       {data.map((genre: Genre) => (
@@ -15,7 +34,7 @@ const GenreList = () => {
               <HStack paddingX={5}>
                 <Image
                   src={getCroppedImageUrl(genre.image_background)}
-                  boxSize={45}
+                  boxSize="45px"
                   margin={1}
                   borderRadius="15px"
                 />
