@@ -6,8 +6,9 @@ import GenreSkeleton from "./GenreSkeleton";
 
 interface props {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
-const GenreList = ({ onSelectedGenre }: props) => {
+const GenreList = ({ onSelectedGenre, selectedGenre }: props) => {
   const { data, loading, error } = useGenre();
   const geneSkeleton = Array.from({ length: 15 }, (_, index) => index + 1);
 
@@ -45,7 +46,12 @@ const GenreList = ({ onSelectedGenre }: props) => {
                     margin={1}
                     borderRadius="15px"
                   />
-                  <Text fontSize="lg" fontWeight="bold">
+                  <Text
+                    fontSize={genre.id === selectedGenre?.id ? "lg" : "xlg"}
+                    fontWeight={
+                      genre.id === selectedGenre?.id ? "bold" : "normal"
+                    }
+                  >
                     {genre.name}
                   </Text>
                 </HStack>

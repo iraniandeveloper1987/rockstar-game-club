@@ -7,9 +7,7 @@ import { Genre } from "./hooks/useGenre";
 
 export const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  useEffect(() => {
-    console.log("selectedGenre is ", selectedGenre);
-  }, [selectedGenre]);
+
   return (
     <>
       <Grid
@@ -29,6 +27,7 @@ export const App = () => {
           <GridItem area="aside">
             <GenreList
               onSelectedGenre={(genre: Genre) => setSelectedGenre(genre)}
+              selectedGenre={selectedGenre}
             />
           </GridItem>
         </Show>
