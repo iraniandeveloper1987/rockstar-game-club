@@ -1,7 +1,7 @@
 import React from "react";
 import useData from "./useData";
 
-interface Platforms {
+export interface Platforms {
   //   count: number;
   //   results: {
   //     id: number;

@@ -6,12 +6,14 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 
 import { Genre } from "../hooks/useGenre";
+import { Platforms } from "../hooks/usePlatforms";
 
 interface props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platforms | null;
 }
-function GameGrid({ selectedGenre }: props) {
-  const { data, error, loading } = useGames(selectedGenre);
+function GameGrid({ selectedGenre, selectedPlatform }: props) {
+  const { data, error, loading } = useGames(selectedGenre, selectedPlatform);
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <div>
