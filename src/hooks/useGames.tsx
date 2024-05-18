@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import application from "../services/api-client";
+import useData from "./useData";
+import { Genre } from "./useGenre";
 
 export interface platform {
   id: number;
@@ -14,34 +14,9 @@ export interface Game {
   parent_platforms: { platform: platform }[];
   metacritic: number;
 }
-interface FetchGamesResponse {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Game[];
-}
-function useGames() {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    setLoading(true);
-    application
-      .get<FetchGamesResponse>("/games")
-      .then((res) => {
-        setGames(res.data.results); // Set the games state to the results array
-
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-        console.log("Error : ", error);
-      });
-  }, []);
-
-  return { games, error, loading };
-}
-
+const useGames = (selectedGenre: Genre | null) =>
+  useData<Game>("/games", { params: { genres: selectedGenre?.id } }, [
+    selectedGenre?.id,
+  ]);
 export default useGames;
