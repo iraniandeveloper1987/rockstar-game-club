@@ -22,7 +22,7 @@ const PlatformSelector = ({
     return null;
   }
   return (
-    <Box margin={4} paddingLeft={8}>
+    <Box marginBottom={7} paddingLeft={12}>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
           {selectedPlatform ? selectedPlatform.name : "Platforms"}
