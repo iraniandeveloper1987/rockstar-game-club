@@ -18,7 +18,10 @@ interface props {
 function GameCard({ game }: props) {
   return (
     <Card>
-      <Img src={getCroppedImageUrl(game.background_image)} alt={game.name} />
+      <Img
+        src={getCroppedImageUrl(game.background_image) as string}
+        alt={game.name}
+      />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
         <HStack justifyContent="space-between">

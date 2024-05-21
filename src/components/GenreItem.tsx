@@ -14,7 +14,7 @@ const GenreItem = ({ onSelectedGenre, genre, selectedGenre }: Props) => {
       <Button variant="link" onClick={() => onSelectedGenre(genre)}>
         <HStack paddingX={5}>
           <Image
-            src={getCroppedImageUrl(genre.image_background)}
+            src={getCroppedImageUrl(genre.image_background) as string}
             boxSize="45px"
             margin={1}
             borderRadius="15px"
