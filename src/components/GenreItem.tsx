@@ -18,10 +18,13 @@ const GenreItem = ({ onSelectedGenre, genre, selectedGenre }: Props) => {
             boxSize="45px"
             margin={1}
             borderRadius="15px"
+            objectFit="cover"
           />
           <Text
             fontSize={genre.id === selectedGenre?.id ? "lg" : "xl"}
             fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+            whiteSpace="normal"
+            textAlign="left"
           >
             {genre.name}
           </Text>

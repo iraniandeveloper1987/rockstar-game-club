@@ -28,7 +28,7 @@ export const App = () => {
         }}
         templateColumns={{
           base: "1fr",
-          lg: "240px 1fr",
+          lg: "220px 1fr",
         }}
       >
         <GridItem area="nav">
