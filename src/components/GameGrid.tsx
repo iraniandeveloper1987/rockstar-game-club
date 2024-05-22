@@ -21,7 +21,7 @@ function GameGrid({ gameQuery }: props) {
 
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
-        spacing={10}
+        spacing={5}
         paddingX="25px"
         justifyContent="center"
       >
